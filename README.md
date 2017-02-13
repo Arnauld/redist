@@ -1,12 +1,50 @@
 redist
 =====
 
-An OTP library
+Redis experiment in Erlang.
 
 Build
 -----
 
-    $ rebar3 compile
+    $ rebar3 do clean, compile, eunit, shell
+    ...
+    Erlang/OTP 19 [erts-8.2] [source] [64-bit] [smp:4:4] [async-threads:0] [kernel-poll:false]
+
+    Eshell V8.2  (abort with ^G)
+    1> use
+    usecase     user        user_drv    user_sup
+    1> usecase:sc().
+    CFG: <<"OK">>
+    >> {ok,<<"10">>}
+    >> {subscribed,<<"__key*__:*">>,<0.169.0>}
+    >> {ok,<<"9">>}
+    >> {ok,<<"8">>}
+    >> {ok,<<"7">>}
+    >> {ok,<<"6">>}
+    >> {ok,<<"5">>}
+    >> {ok,<<"4">>}
+    >> {ok,<<"3">>}
+    >> {ok,<<"2">>}
+    >> {ok,<<"1">>}
+    >> Expired!!
+    >> {pmessage,<<"__key*__:*">>,<<"__keyspace@0__:foo">>,<<"expired">>,
+                 <0.169.0>}
+    >> {pmessage,<<"__key*__:*">>,<<"__keyevent@0__:expired">>,<<"foo">>,
+                 <0.169.0>}
+    ok
+    2>
+
+
+
+Links
+-----
+
+* [Erlang Redis Client](https://github.com/wooga/eredis)
+* Redis
+  * [PSUBSCRIBE](https://redis.io/commands/psubscribe)
+  * [EXPIRE](https://redis.io/commands/expire)
+  * [Redis Keyspace Notifications](https://redis.io/topics/notifications)
+  * [Stackoverflow: Redis, session expiration, and reverse lookup](http://stackoverflow.com/a/16747795)
 
 
 Docker
